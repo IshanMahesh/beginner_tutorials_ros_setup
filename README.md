@@ -1,5 +1,5 @@
-# beginner_tutorials_ros_setup
-Overview
+# beginner_tutorials ros_setup
+## Overview
 
 This package contains code for a simple publisher and subscriber written in C++ for ROS2 (Humble). Along with services. Additionally, it also contains a launch file to launch all the nodes at once and a unit test.
 Building and Running
@@ -17,52 +17,52 @@ To build the package follow the following steps
 
 cd .. # Make sure you are in the workspace folder and not in src
 
-# This will build all the packages in your workspace
+## This will build all the packages in your workspace
 colcon build
 
-# To build only this package use
+## To build only this package use
 colcon build --package-select beginner_tutorials
 
-# Source your setup file
+## Source your setup file
 source install/setup.bash
 
-Running
+## Running
 
 We first run the subscriber so that we don't lose any of the data the publisher has already published.
 
 To run the publisher, server and subscriber.
 
-# Runs the subscriber
+## Runs the subscriber
 ros2 run beginner_tutorials listener
 
 In a new terminal
 
 cd < path_to_your_workspace >
 
-# Source your setup file
+## Source your setup file
 . install/setup.bash
 
-# Runs the publisher
+## Runs the publisher
 ros2 run beginner_tutorial talker
 
 Again in a new terminal
 
 cd < path_to_your_workspace >
 
-# Source your setup file
+## Source your setup file
 . install/setup.bash
 
-# Runs the server
+## Runs the server
 ros2 run beginner_tutorial server
 
 Alternatively you can run all three at once using the launch file
 
 cd < path_to_your_workspace >
 
-# Using ROS2 Launch 
+## Using ROS2 Launch 
 ros2 launch beginner_tutorial server.launch
 
-# You can also edit the publishing frequency using the launch file
+## You can also edit the publishing frequency using the launch file
 ros2 launch beginner_tutorial server.launch pub_freq:=< double value >
 
 Testing
@@ -71,10 +71,10 @@ To run the unit tests
 
 cd < path_to_your_workspace >
 
-# Source your setup file
+## Source your setup file
 . install/setup.bash
 
-# Runs the unit tests
+## Runs the unit tests
 ros2 run beginner_tutorials test_beginner_tutorials 
 
 Running ROSBAG
@@ -83,13 +83,13 @@ To record the data published by the publisher and server we can use ROSBAG.
 
 cd < path_to_your_workspace >
 
-# Source your setup file
+## Source your setup file
 . install/setup.bash
 
-# To check if the bag file is valid run the listener node (run this first as we don't want to lose any data)
+## To check if the bag file is valid run the listener node (run this first as we don't want to lose any data)
 ros2 run beginner_tutorials listener
 
-# Runs the bag file
+## Runs the bag file
 ros2 bag play src/beginner_tutorials/bagfiles/tutorial_bagfile
 
 Dependencies
