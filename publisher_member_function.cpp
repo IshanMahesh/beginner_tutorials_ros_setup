@@ -22,12 +22,16 @@
 
 using namespace std::chrono_literals;
 
-/* This example creates a subclass of Node and uses std::bind() to register a
- * member function as a callback from the timer. */
-
+/**
+ * \brief This example creates a subclass of Node and uses std::bind() to register a
+ * member function as a callback from the timer.
+ */
 class MinimalPublisher : public rclcpp::Node
 {
 public:
+  /**
+   * \brief Constructor for MinimalPublisher class.
+   */
   MinimalPublisher()
   : Node("minimal_publisher"), count_(0)
   {
@@ -37,6 +41,9 @@ public:
   }
 
 private:
+  /**
+   * \brief Callback function for the timer.
+   */
   void timer_callback()
   {
     auto message = std_msgs::msg::String();
@@ -44,11 +51,15 @@ private:
     RCLCPP_INFO(this->get_logger(), "Publishing: '%s'", message.data.c_str());
     publisher_->publish(message);
   }
-  rclcpp::TimerBase::SharedPtr timer_;
-  rclcpp::Publisher<std_msgs::msg::String>::SharedPtr publisher_;
-  size_t count_;
+
+  rclcpp::TimerBase::SharedPtr timer_; ///< Timer object used to trigger the callback.
+  rclcpp::Publisher<std_msgs::msg::String>::SharedPtr publisher_; ///< Publisher object.
+  size_t count_; ///< Counter for message count.
 };
 
+/**
+ * \brief Main function to initialize and run the node.
+ */
 int main(int argc, char * argv[])
 {
   rclcpp::init(argc, argv);
@@ -56,3 +67,4 @@ int main(int argc, char * argv[])
   rclcpp::shutdown();
   return 0;
 }
+
