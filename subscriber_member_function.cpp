@@ -20,9 +20,15 @@
 
 using std::placeholders::_1;
 
+/**
+ * \brief Class representing a minimal subscriber node.
+ */
 class MinimalSubscriber : public rclcpp::Node
 {
 public:
+  /**
+   * \brief Constructor for MinimalSubscriber class.
+   */
   MinimalSubscriber()
   : Node("minimal_subscriber")
   {
@@ -31,13 +37,24 @@ public:
   }
 
 private:
+  /**
+   * \brief Callback function for the subscription topic.
+   * \param[in] msg The message received on the topic.
+   */
   void topic_callback(const std_msgs::msg::String & msg) const
   {
     RCLCPP_INFO(this->get_logger(), "I heard: '%s'", msg.data.c_str());
   }
-  rclcpp::Subscription<std_msgs::msg::String>::SharedPtr subscription_;
+
+  rclcpp::Subscription<std_msgs::msg::String>::SharedPtr subscription_; ///< Subscription object.
 };
 
+/**
+ * \brief Main function to initialize and run the node.
+ * \param[in] argc Number of command-line arguments.
+ * \param[in] argv Array of command-line arguments.
+ * \return Program exit status.
+ */
 int main(int argc, char * argv[])
 {
   rclcpp::init(argc, argv);
@@ -45,3 +62,4 @@ int main(int argc, char * argv[])
   rclcpp::shutdown();
   return 0;
 }
+
